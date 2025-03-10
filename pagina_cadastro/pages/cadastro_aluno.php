@@ -7,11 +7,12 @@
         // adquire as variaves enviadas atraves do HTML
         $codigo = $_POST['codigo'];
         $nome = $_POST['nome'];
-        $codcoord = $_POST['codcoord'];
+        $fone = $_POST['fone'];
+        $codcurso = $_POST['codcurso'];
 
         // comando sql do banco de dados
-        $sql = "insert into escola.curso (codigo, nome, codcoord)
-                values('$codigo','$nome','$codcoord');";
+        $sql = "insert into escola.aluno (codigo, nome, fone, codcurso)
+                values('$codigo','$nome','$fone','$codcurso');";
 
         // executar o comando sql
         $resultado = mysql_query($sql);
@@ -27,9 +28,10 @@
     if (isset($_POST['Alterar'])) {
         $codigo = $_POST['codigo'];
         $nome = $_POST['nome'];
-        $codcoord = $_POST['codcoord'];
+        $fone = $_POST['fone'];
+        $codcurso = $_POST['codcurso'];
     
-        $sql = "UPDATE escola.curso SET nome = '$nome', codcoord = '$codcoord' WHERE codigo = '$codigo'";
+        $sql = "UPDATE escola.aluno SET nome = '$nome', codcurso = '$codcurso', fone = '$fone' WHERE codigo = '$codigo'";
     
         $resultado = mysql_query($sql);
     
@@ -44,9 +46,10 @@
     if (isset($_POST['Excluir'])) {
         $codigo = $_POST['codigo'];
         $nome = $_POST['nome'];
-        $codcoord = $_POST['codcoord'];
+        $fone = $_POST['fone'];
+        $codcurso = $_POST['codcurso'];
 
-        $sql = "delete from escola.curso
+        $sql = "delete from escola.aluno
         where codigo = '$codigo'";
 
         $resultado = mysql_query($sql);
@@ -60,7 +63,7 @@
     }
 
     if (isset($_POST['Pesquisar'])) {
-        $sql = "select * from escola.curso";
+        $sql = "select * from escola.aluno";
 
         $resultado = mysql_query($sql);
         
@@ -73,7 +76,8 @@
             while($dados = mysql_fetch_array($resultado)) { 
                 echo "Codigo: ".$dados['codigo']."<br>".
                      "Nome: ".$dados['nome']."<br><br>".
-                     "Codigo Coordenador: ".$dados['codcoord']."<br><br>";
+                     "Fone: ".$dados['fone']."<br><br>".
+                     "Codigo Curso: ".$dados['codcurso']."<br><br>";
             }
         }
     }
