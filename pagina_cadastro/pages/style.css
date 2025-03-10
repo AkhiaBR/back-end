@@ -94,6 +94,23 @@ input[type="text"]:focus {
     box-shadow: 0 0 10px rgba(255, 99, 71, 0.5);
 }
 
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 2px solid #fff;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #333;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="password"]:focus {
+    outline: none;
+    border-color: #ff6347;
+    box-shadow: 0 0 10px rgba(255, 99, 71, 0.5);
+}
+
 /* Botões de envio */
 input[type="submit"] {
     padding: 10px 20px;
