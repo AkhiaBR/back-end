@@ -1,165 +1,98 @@
-/* Resetando margens e padding */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* Corpo da página */
 body {
-    font-family: 'Arial', sans-serif;
-    background: linear-gradient(135deg, rgba(255, 0, 0, 0.8), rgba(255, 99, 71, 0.8));
-    color: #fff;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    min-height: 100%;
-    transition: background 0.5s ease;
+    background-color: white;
+    color: white;
 }
 
-/* Cabeçalho */
 header {
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    padding: 20px 0;
+    background-color: rgb(62, 0, 62);
+    color: white;
+    padding: 10px 0;
     text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-    margin-bottom: 20px;
 }
 
 header h1 {
-    font-size: 2.5rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: #fff;
-    animation: fadeIn 1s ease;
+    margin: 0;
+    padding: 1.5rem;
+    font-size: 54px;
 }
 
-/* Área do formulário */
+header a h2 {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 0.2rem;
+}
+
+header a h2:hover {
+    transform: scale(1.2);
+    transition: transform 0.5s ease;
+}
+
 .mid_page {
-    width: 100%;
-    max-width: 500px;
-    background-color: rgba(0, 0, 0, 0.6);
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
-    animation: fadeInUp 1s ease;
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 600px;
+    background-color: rgb(241, 241, 241);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Título do formulário */
-h2 {
-    font-size: 1.8rem;
-    margin-bottom: 20px;
+.mid_page h2 {
     text-align: center;
-    color: #fff;
-    font-weight: 600;
+    color: rgb(62, 0, 62);
 }
 
-/* Caixa de cadastro */
 .cadastro_box {
-    display: flex;
-    flex-direction: row;
+    margin-top: 20px;
 }
 
-.cadastro_box input {
-    margin: 0.4rem;
+.cadastro_box h3 {
+    margin: 10px 0;
+    color: rgb(62, 0, 62);
 }
 
-h3 {
-    font-size: 1.1rem;
-    font-weight: 500;
-    color: #fff;
+.cadastro_box input[type="text"],
+.cadastro_box input[type="password"] {
+    width: calc(100% - 20px);
+    padding: 8px;
+    margin: 5px 0;
+    border: 1px solid black;
+    border-radius: 4px;
 }
 
-/* Inputs de texto */
-input[type="text"] {
-    width: 100%;
-    padding: 10px;
-    font-size: 1rem;
-    border: 2px solid #fff;
-    border-radius: 5px;
-    background-color: #fff;
-    color: #333;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-input[type="text"]:focus {
-    outline: none;
-    border-color: #ff6347;
-    box-shadow: 0 0 10px rgba(255, 99, 71, 0.5);
-}
-
-input[type="password"] {
-    width: 100%;
-    padding: 10px;
-    font-size: 1rem;
-    border: 2px solid #fff;
-    border-radius: 5px;
-    background-color: #fff;
-    color: #333;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-input[type="password"]:focus {
-    outline: none;
-    border-color: #ff6347;
-    box-shadow: 0 0 10px rgba(255, 99, 71, 0.5);
-}
-
-/* Botões de envio */
-input[type="submit"] {
-    padding: 10px 20px;
-    font-size: 1rem;
-    background-color: #ff6347;
+.cadastro_box input[type="submit"] {
+    background-color: gray;
+    color: white;
     border: none;
-    border-radius: 5px;
-    color: #fff;
+    padding: 10px 15px;
+    margin: 5px 2px;
+    border-radius: 4px;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-input[type="submit"]:hover {
-    background-color: #ff4500;
+.cadastro_box input[type="submit"]:hover {
     transform: scale(1.05);
+    transition: transform 0.5s ease;
 }
 
-/* Efeito de fade-in para o footer */
+a {
+    text-decoration: none;
+    color: gray;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
 footer {
-    width: 100%;
     text-align: center;
     padding: 10px 0;
-    background-color: rgba(0, 0, 0, 0.7);
-    position: absolute;
+    background-color: rgb(62, 0, 62);
+    color: white;
+    position: fixed;
     bottom: 0;
-    left: 0;
-    right: 0;
-    font-size: 1.2rem;
-    color: #fff;
-    animation: fadeIn 2s ease;
-}
-
-/* Animações */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    width: 100%;
 }
