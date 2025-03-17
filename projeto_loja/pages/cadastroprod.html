@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cadastro Produto</title>
+    <link rel="stylesheet" type="text/css" href="main.css">
+</head>
+<body>
+    <div id="formulario"> 
+        <h1>Cadastro Produto</h1>
+        <form name="formulario" method="POST" action="cadastroproduto.php" enctype="multipart/form-data">
+            <label>Codigo:</label>
+            <input type="text" name="codigo" id="codigo" size="10">
+            <br><br>
+            <label>Descricao:</label>
+            <input type="text" name="descricao" id="descricao" size="30">
+            <br><br>
+            <label>Cod Categoria:</label>
+            <input type="text" name="codigo_categoria" id="codigo_categoria" size="30">
+            <br><br>
+            <label>Cod Classificacao:</label>
+            <input type="text" name="codigo_classificacao" id="codigo_classificacao" size="30">
+            <br><br>
+            <label>Cod Marca:</label>
+            <input type="text" name="codigo_marca" id="codigo_marca" size="30">
+            <br><br>
+            <label>Cor:</label>
+            <input type="text" name="cor" id="cor" size="30">
+            <br><br>
+            <label>Tamanho:</label>
+            <input type="text" name="tamanho" id="tamanho" size="30">
+            <br><br>
+            <label>Preco:</label>
+            <input type="text" name="preco" id="preco" size="30">
+            <br><br>
+            <label>Foto 1</label>
+            <input type="file" name="foto1" id="foto_1">
+            <br><br>
+            <label>Foto 2</label>
+            <input type="file" name="foto2" id="foto_2">
+            <br><br>
+            <input type="submit" name="gravar" value="Gravar">
+            <input type="submit" name="excluir" value="Excluir">
+            <input type="submit" name="alterar" value="Alterar">
+            <input type="submit" name="pesquisar" value="Pesquisar">
+        </form>
+    </div>
+</body>
+</html>
