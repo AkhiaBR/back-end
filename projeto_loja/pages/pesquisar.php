@@ -31,17 +31,17 @@ $db      = mysql_select_db('loja');
         ?>
         </select>
         
-        <!------ pesquisar Classificacao -------------->
-        <label for="">Classificação: </label>
-        <select name="classificacao">
+        <!------ pesquisar tipo -------------->
+        <label for="">Classificaï¿½ï¿½o: </label>
+        <select name="tipo">
         <option value="" selected="selected">Selecione...</option>
 
         <?php
-        $query = mysql_query("SELECT codigo, nome FROM classificacao");
-        while($classificacao = mysql_fetch_array($query))
+        $query = mysql_query("SELECT codigo, nome FROM tipo");
+        while($tipo = mysql_fetch_array($query))
         {?>
-        <option value="<?php echo $classificacao['codigo']?>">
-                       <?php echo $classificacao['nome']   ?></option>
+        <option value="<?php echo $tipo['codigo']?>">
+                       <?php echo $tipo['nome']   ?></option>
         <?php }
         ?>
         </select>
@@ -68,20 +68,20 @@ $db      = mysql_select_db('loja');
 
 if (isset($_POST['pesquisar']))
 {
-//verifica que a opção marca e modelo foi selecionada ou não
+//verifica que a opï¿½ï¿½o marca e modelo foi selecionada ou nï¿½o
 $marca          = (empty($_POST['marca']))? 'null' : $_POST['marca'];
 $categoria      = (empty($_POST['categoria']))? 'null' : $_POST['categoria'];
-$classificacao  = (empty($_POST['classificacao']))? 'null' : $_POST['classificacao'];
+$tipo  = (empty($_POST['tipo']))? 'null' : $_POST['tipo'];
 
 //---------- pesquisar  marca escolhida ----------------
 
-if (($marca <> 'null') and ($categoria == 'null') and ($classificacao == 'null'))
+if (($marca <> 'null') and ($categoria == 'null') and ($tipo == 'null'))
 {
-     $sql_produtos       = "SELECT produto.descricao,produto.cor,produto.tamanho,produto.preco,produto.foto1,produto.foto2
-                            FROM produto, marca, categoria, classificacao
-                            WHERE produto.codmarca = marca.codigo
-                            and produto.codcategoria = categoria.codigo
-                            and produto.codclassificacao = classificacao.codigo
+     $sql_produtos       = "SELECT produto.descricao,produto.cor,produto.tamanho,produto.preco,produto.foto_1,produto.foto_2
+                            FROM produto, marca, categoria, tipo
+                            WHERE produto.codigo_marca = marca.codigo
+                            and produto.codigo_categoria = categoria.codigo
+                            and produto.codigo_tipo = tipo.codigo
                             and marca.codigo = $marca ";
                             
      $seleciona_produtos = mysql_query($sql_produtos);
@@ -91,15 +91,15 @@ if (($marca <> 'null') and ($categoria == 'null') and ($classificacao == 'null')
 
 //---------- pesquisar marca e categoria escolhida ----------------
 
-//---------- pesquisar classificacao escolhida ----------------
+//---------- pesquisar tipo escolhida ----------------
 
-//---------- pesquisar marca e categoria e classificacao escolhido ----------------
+//---------- pesquisar marca e categoria e tipo escolhido ----------------
 
 // colocar mais filtros ?????
 
 
 
-//---------- mostrar as informações dos produtos  ----------------
+//---------- mostrar as informaï¿½ï¿½es dos produtos  ----------------
 if(mysql_num_rows($seleciona_produtos) == 0)
 {
    echo '<h1>Desculpe, mas sua busca nao retornou resultados ... </h1>';
@@ -109,12 +109,12 @@ else
    echo "Resultado da pesquisa de Produtos: <br><br>";
     while ($dados = mysql_fetch_object($seleciona_produtos))
 	{
-      echo "Descrição :".$dados->descricao." ";
+      echo "Descriï¿½ï¿½o :".$dados->descricao." ";
       echo "  Cor       : ".$dados->cor." ";
       echo "  Tamanho   : ".$dados->tamanho." ";
-      echo "  Preço R$  : ".$dados->preco."<br>";
-      echo '<img src="fotos/'.$dados->foto1.'" height="100" width="150" />'." ";
-      echo '<img src="fotos/'.$dados->foto2.'" height="100" width="150" />'."<br><br>";
+      echo "  Preï¿½o R$  : ".$dados->preco."<br>";
+      echo '<img src="fotos/'.$dados->foto_1.'" height="100" width="150" />'." ";
+      echo '<img src="fotos/'.$dados->foto_2.'" height="100" width="150" />'."<br><br>";
 	}
    }
 }

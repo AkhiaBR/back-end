@@ -8,7 +8,7 @@ if (isset($_POST['gravar']))
     $codigo            = $_POST['codigo'];
     $descricao         = $_POST['descricao'];
     $codigo_categoria      = $_POST['codigo_categoria'];
-    $codigo_classificacao  = $_POST['codigo_classificacao'];
+    $codigo_tipo  = $_POST['codigo_tipo'];
     $codigo_marca          = $_POST['codigo_marca'];
     $cor               = $_POST['cor'];
     $tamanho           = $_POST['tamanho'];
@@ -16,8 +16,8 @@ if (isset($_POST['gravar']))
     $foto_1             = $_FILES['foto_1'];
     $foto_2             = $_FILES['foto_2'];
 
-//PARA CONHECIMENTO, CRIPTOGRAFIA DE classificacao
-//$classificacao = md5 ($_POST['classificacao']);
+//PARA CONHECIMENTO, CRIPTOGRAFIA DE tipo
+//$tipo = md5 ($_POST['tipo']);
 
     //criar pasta e mover arquivos img
     $diretorio = "fotos/";
@@ -30,8 +30,8 @@ if (isset($_POST['gravar']))
     $novo_nome2 = md5(time().$extensao2);
     move_uploaded_file($_FILES['foto_2']['tmp_name'], $diretorio.$novo_nome2);
 
-   $sql = mysql_query("INSERT INTO produto (codigo,descricao,codigo_categoria,codigo_classificacao,codigo_marca,cor,tamanho,preco,foto_1,foto_2)
-                values ('$codigo','$descricao','$codigo_categoria','$codigo_classificacao','$codigo_marca','$cor','$tamanho','$preco','$novo_nome1','$novo_nome2')");
+   $sql = mysql_query("INSERT INTO produto (codigo,descricao,codigo_categoria,codigo_tipo,codigo_marca,cor,tamanho,preco,foto_1,foto_2)
+                values ('$codigo','$descricao','$codigo_categoria','$codigo_tipo','$codigo_marca','$cor','$tamanho','$preco','$novo_nome1','$novo_nome2')");
 
    $resultado = mysql_query($sql);
 
@@ -46,7 +46,7 @@ if (isset($_POST['excluir']))
    $codigo            = $_POST['codigo'];
    $descricao         = $_POST['descricao'];
    $codigo_categoria      = $_POST['codigo_categoria'];
-   $codigo_classificacao  = $_POST['codigo_classificacao'];
+   $codigo_tipo  = $_POST['codigo_tipo'];
    $codigo_marca          = $_POST['codigo_marca'];
    $cor               = $_POST['cor'];
    $tamanho           = $_POST['tamanho'];
@@ -73,7 +73,7 @@ if (isset($_POST['alterar']))
    $codigo            = $_POST['codigo'];
    $descricao         = $_POST['descricao'];
    $codigo_categoria      = $_POST['codigo_categoria'];
-   $codigo_classificacao  = $_POST['codigo_classificacao'];
+   $codigo_tipo  = $_POST['codigo_tipo'];
    $codigo_marca          = $_POST['codigo_marca'];
    $cor               = $_POST['cor'];
    $tamanho           = $_POST['tamanho'];
@@ -81,7 +81,7 @@ if (isset($_POST['alterar']))
    $foto_1             = $_FILES['foto_1'];
    $foto_2             = $_FILES['foto_2'];
 
-  $sql = "UPDATE produto SET descricao='$descricao',classificacao='$classificacao',preco='$preco'
+  $sql = "UPDATE produto SET descricao='$descricao',tipo='$tipo',preco='$preco'
           WHERE codigo = '$codigo'";
   $resultado = mysql_query($sql);
 
@@ -97,7 +97,7 @@ if (isset($_POST['alterar']))
 
 if (isset($_POST['pesquisar']))
 {
-   $sql = mysql_query("SELECT codigo,descricao,codigo_categoria,codigo_classificacao,codigo_marca,cor,tamanho,preco,foto_1,foto_2 FROM produto");
+   $sql = mysql_query("SELECT codigo,descricao,codigo_categoria,codigo_tipo,codigo_marca,cor,tamanho,preco,foto_1,foto_2 FROM produto");
    
    if (mysql_num_rows($sql) == 0)
          {echo "Desculpe, mas sua pesquisa não retornou resultados.";}
@@ -109,7 +109,7 @@ if (isset($_POST['pesquisar']))
                 echo "Codigo         : ".$dados->codigo." ";
                 echo "Descricao      : ".$dados->descricao."<br>";
                 echo "Categoria      : ".$dados->codigo_categoria." ";
-                echo "Classificacao  : ".$dados->codigo_classificacao." ";
+                echo "tipo  : ".$dados->codigo_tipo." ";
                 echo "Marca          : ".$dados->codigo_marca."";  
                 echo "Cor            : ".$dados->cor."<br>";
                 echo "Tamanho        : ".$dados->tamanho." ";
