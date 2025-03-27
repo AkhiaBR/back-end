@@ -3,42 +3,49 @@
 $conectar = mysql_connect('localhost','root','');
 $banco    = mysql_select_db("loja");
 
-if (isset($_POST['gravar']))
-{
-    $codigo            = $_POST['codigo'];
-    $descricao         = $_POST['descricao'];
-    $codigo_categoria      = $_POST['codigo_categoria'];
-    $codigo_tipo  = $_POST['codigo_tipo'];
-    $codigo_marca          = $_POST['codigo_marca'];
-    $cor               = $_POST['cor'];
-    $tamanho           = $_POST['tamanho'];
-    $preco             = $_POST['preco'];
-    $foto_1             = $_FILES['foto_1'];
-    $foto_2             = $_FILES['foto_2'];
+if (isset($_POST['gravar'])) {
+    $codigo = $_POST['codigo'];
+    $descricao = $_POST['descricao'];
+    $codigo_categoria = $_POST['codigo_categoria'];
+    $codigo_tipo = $_POST['codigo_tipo'];
+    $codigo_marca = $_POST['codigo_marca'];
+    $cor = $_POST['cor'];
+    $tamanho = $_POST['tamanho'];
+    $preco = $_POST['preco'];
+    $foto_1 = $_FILES['foto_1'];
+    $foto_2 = $_FILES['foto_2'];
 
-//PARA CONHECIMENTO, CRIPTOGRAFIA DE tipo
-//$tipo = md5 ($_POST['tipo']);
+    // Criar pasta e mover arquivos de imagem
+    $diretorio = "../images/";
 
-    //criar pasta e mover arquivos img
-    $diretorio = "fotos/";
+    // Verificar se a foto 1 foi carregada corretamente
+    if ($foto_1['error'] === UPLOAD_ERR_OK) {
+        $extensao1 = strtolower(substr($foto_1['name'], -4));
+        $novo_nome1 = md5(time() . $extensao1);
+        move_uploaded_file($foto_1['tmp_name'], $diretorio . $novo_nome1);
+    } else {
+        echo "Erro ao fazer upload da foto 1.";
+    }
 
-    $extensao1 = strtolower(substr($_FILES['foto_1']['name'], -4));
-    $novo_nome1 = md5(time().$extensao1);
-    move_uploaded_file($_FILES['foto_1']['tmp_name'], $diretorio.$novo_nome1);
+    // Verificar se a foto 2 foi carregada corretamente
+    if ($foto_2['error'] === UPLOAD_ERR_OK) {
+        $extensao2 = strtolower(substr($foto_2['name'], -4));
+        $novo_nome2 = md5(time() . $extensao2);
+        move_uploaded_file($foto_2['tmp_name'], $diretorio . $novo_nome2);
+    } else {
+        echo "Erro ao fazer upload da foto 2.";
+    }
 
-    $extensao2 = strtolower(substr($_FILES['foto_2']['name'], -6));
-    $novo_nome2 = md5(time().$extensao2);
-    move_uploaded_file($_FILES['foto_2']['tmp_name'], $diretorio.$novo_nome2);
+    // Inserir dados no banco de dados
+    $sql = "INSERT INTO produto (codigo, descricao, cor, tamanho, preco, codigo_marca, codigo_categoria, codigo_tipo, foto_1, foto_2)
+            VALUES ('$codigo', '$descricao', '$cor', '$tamanho', '$preco', '$codigo_marca', '$codigo_categoria', '$codigo_tipo', '$novo_nome1', '$novo_nome2')";
+    $resultado = mysql_query($sql);
 
-   $sql = mysql_query("INSERT INTO produto (codigo,descricao,codigo_categoria,codigo_tipo,codigo_marca,cor,tamanho,preco,foto_1,foto_2)
-                values ('$codigo','$descricao','$codigo_categoria','$codigo_tipo','$codigo_marca','$cor','$tamanho','$preco','$novo_nome1','$novo_nome2')");
-
-   $resultado = mysql_query($sql);
-
-   if ($resultado)
-        {echo " Falha ao gravar os dados informados";}
-   else
-        {echo " Dados informados cadastrados com sucesso";}
+    if ($resultado) {
+        echo "Dados informados cadastrados com sucesso.";
+    } else {
+        echo "Falha ao gravar os dados informados.";
+    }
 }
 
 if (isset($_POST['excluir']))
@@ -81,7 +88,7 @@ if (isset($_POST['alterar']))
    $foto_1             = $_FILES['foto_1'];
    $foto_2             = $_FILES['foto_2'];
 
-  $sql = "UPDATE produto SET descricao='$descricao',tipo='$tipo',preco='$preco'
+  $sql = "UPDATE produto SET descricao='$descricao',preco='$preco'
           WHERE codigo = '$codigo'";
   $resultado = mysql_query($sql);
 
@@ -97,25 +104,25 @@ if (isset($_POST['alterar']))
 
 if (isset($_POST['pesquisar']))
 {
-   $sql = mysql_query("SELECT codigo,descricao,codigo_categoria,codigo_tipo,codigo_marca,cor,tamanho,preco,foto_1,foto_2 FROM produto");
+   $sql = mysql_query("SELECT codigo, descricao, cor, tamanho, preco, codigo_marca, codigo_categoria, codigo_tipo, foto_1, foto_2 FROM produto");
    
    if (mysql_num_rows($sql) == 0)
          {echo "Desculpe, mas sua pesquisa não retornou resultados.";}
    else
         {
         echo "<b>Produtos Cadastrados:</b><br><br>";
-        while ($resultado = mysql_fetch_array($sql))
+        while ($resultado = mysql_fetch_object($sql))
  	        {
-                echo "Codigo         : ".$dados->codigo." ";
-                echo "Descricao      : ".$dados->descricao."<br>";
-                echo "Categoria      : ".$dados->codigo_categoria." ";
-                echo "tipo  : ".$dados->codigo_tipo." ";
-                echo "Marca          : ".$dados->codigo_marca."";  
-                echo "Cor            : ".$dados->cor."<br>";
-                echo "Tamanho        : ".$dados->tamanho." ";
-                echo "Preco          : ".$dados->preco."<br>";
-                echo '<img src="fotos/'.$dados->foto_1.'"height="200" width="200" />'."  ";
-                echo '<img src="fotos/'.$dados->foto_2.'"height="200" width="200" />'."<br><br>  ";
+                echo "Codigo         : ".$resultado->codigo." ";
+                echo "Descricao      : ".$resultado->descricao."<br>";
+                echo "Cor            : ".$resultado->cor."<br>";
+                echo "Tamanho        : ".$resultado->tamanho." ";
+                echo "Preco          : ".$resultado->preco."<br>";
+                echo "Marca          : ".$resultado->codigo_marca."";  
+                echo "Categoria      : ".$resultado->codigo_categoria." ";
+                echo "Tipo           : ".$resultado->codigo_tipo." ";
+                echo '<img src="../images/'.$resultado->foto_1.'"height="200" width="200" />'."  ";
+                echo '<img src="../images/'.$resultado->foto_2.'"height="200" width="200" />'."<br><br>  ";
             }
         }
 }
