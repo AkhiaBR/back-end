@@ -15,28 +15,27 @@ if (isset($_POST['gravar'])) {
     $foto_1 = $_FILES['foto_1'];
     $foto_2 = $_FILES['foto_2'];
 
-    // Criar pasta e mover arquivos de imagem
+    // pasta onde será armazenada as imagens
     $diretorio = "../images/";
 
-    // Verificar se a foto 1 foi carregada corretamente
+    // cadastro das fotos
     if ($foto_1['error'] === UPLOAD_ERR_OK) {
         $extensao1 = strtolower(substr($foto_1['name'], -4));
-        $novo_nome1 = md5(time() . $extensao1);
+        $novo_nome1 = md5(uniqid() . $foto_1['name'] . $extensao1); // tem que ser uniqid para a foto2 não sobrepor a foto1
         move_uploaded_file($foto_1['tmp_name'], $diretorio . $novo_nome1);
     } else {
         echo "Erro ao fazer upload da foto 1.";
     }
-
-    // Verificar se a foto 2 foi carregada corretamente
+    
     if ($foto_2['error'] === UPLOAD_ERR_OK) {
         $extensao2 = strtolower(substr($foto_2['name'], -4));
-        $novo_nome2 = md5(time() . $extensao2);
+        $novo_nome2 = md5(uniqid() . $foto_2['name'] . $extensao2);
         move_uploaded_file($foto_2['tmp_name'], $diretorio . $novo_nome2);
     } else {
         echo "Erro ao fazer upload da foto 2.";
     }
 
-    // Inserir dados no banco de dados
+    // insete os dados no banco de dados
     $sql = "INSERT INTO produto (codigo, descricao, cor, tamanho, preco, codigo_marca, codigo_categoria, codigo_tipo, foto_1, foto_2)
             VALUES ('$codigo', '$descricao', '$cor', '$tamanho', '$preco', '$codigo_marca', '$codigo_categoria', '$codigo_tipo', '$novo_nome1', '$novo_nome2')";
     $resultado = mysql_query($sql);
