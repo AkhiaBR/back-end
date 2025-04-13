@@ -1,0 +1,164 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+header {
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+body {
+    background-color: #d3b1b1; /* Cor de fundo suave */
+    font-family: 'Roboto', sans-serif; /* Fonte clean e moderna */
+    color: #333; /* Cor padrão para o texto */
+}
+
+.mid_page {
+    width: 80%;
+    margin: 4rem auto;
+    text-align: center;
+}
+
+h1, h2, h3 {
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Menu (links de navegação) */
+a {
+    text-decoration: none;
+    color: #2c3e50; /* Cor suave para links */
+    margin: 0 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+a:hover {
+    color: #e74c3c; /* Cor vibrante no hover */
+    transition: 0.3s ease;
+}
+
+/* Estilo do formulário de login e cadastro */
+form {
+    background-color: #fff; /* Fundo branco para destacar os campos */
+    border-radius: 8px;
+    padding: 30px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+input[type="text"], input[type="password"], input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+input[type="text"]:focus, input[type="password"]:focus, input[type="file"]:focus {
+    border-color: #e74c3c; /* Cor vibrante no foco */
+}
+
+input[type="submit"] {
+    background-color: #e74c3c; /* Vermelho clássico de loja de moda */
+    color: #fff;
+    border: none;
+    padding: 12px 25px;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover {
+    background-color: #c0392b; /* Sombra mais escura para o hover */
+}
+
+/* Estilo para os campos de título no login */
+.cadastro_box h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+/* Estilos específicos da página de produtos */
+#formulario {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+    margin-top: 30px;
+}
+
+#formulario label {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 8px;
+    display: block;
+}
+
+#formulario input[type="text"], #formulario input[type="file"] {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+#formulario input[type="submit"] {
+    margin-right: 10px;
+}
+
+#formulario input[type="submit"]:nth-child(3) {
+    background-color: #2ecc71; /* Verde para o botão 'Alterar' */
+}
+
+#formulario input[type="submit"]:nth-child(4) {
+    background-color: #3498db; /* Azul para o botão 'Pesquisar' */
+}
+
+/* Estilos para os links de navegação no menu */
+.mid_page a {
+    font-size: 22px;
+    text-transform: uppercase;
+    color: #2c3e50;
+    margin: 10px;
+    display: inline-block;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.mid_page a:hover {
+    color: #e74c3c;
+}
+
+/* Estilos de containers gerais */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Estilos para os botões de excluir e excluir */
+input[type="submit"]:nth-child(2) {
+    background-color: #f39c12; /* Amarelo para o botão 'Excluir' */
+}
+
+input[type="submit"]:hover {
+    background-color: #e67e22; /* Sombra mais escura */
+}
+
+/* Estilos para o fundo de login */
+.mid_page {
+    padding: 50px 0;
+    background-color: #ecf0f1;
+}
+
+.cadastro_box {
+    background-color: #fff;
+    padding: 20px 30px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+}
+
