@@ -2,190 +2,373 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Arial', sans-serif;
-}
-
-header {
-    flex-direction: row;
-    justify-content: space-evenly;
-}
-
-body {
-    background-color: #d3b1b1; /* Cor de fundo suave */
-    font-family: 'Roboto', sans-serif; /* Fonte clean e moderna */
-    color: #333; /* Cor padrão para o texto */
-}
-
-.mid_page {
-    width: 80%;
-    margin: 4rem auto;
-    text-align: center;
-}
-
-h1, h2, h3 {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  body {
+    background-color: #f5f5f5;
     color: #333;
-    margin-bottom: 20px;
-}
-
-/* Menu (links de navegação) */
-a {
+    line-height: 1.6;
+  }
+  
+  header {
+    background-color: #ebd82d;
+    color: #297fff;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  header h1 {
+    font-size: 1.8rem;
+    font-weight: 700;
+  }
+  
+  header h2 a {
+    color: rgb(0, 0, 0);
     text-decoration: none;
-    color: #2c3e50; /* Cor suave para links */
-    margin: 0 15px;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-a:hover {
-    color: #e74c3c; /* Cor vibrante no hover */
-    transition: 0.3s ease;
-}
-
-/* Estilo do formulário de login e cadastro */
-form {
-    background-color: #fff; /* Fundo branco para destacar os campos */
-    border-radius: 8px;
-    padding: 30px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-input[type="text"], input[type="password"], input[type="file"] {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
+    padding: 0.5rem 1rem;
+    background-color: #ffffff;
     border-radius: 4px;
-    font-size: 16px;
-    transition: border-color 0.3s;
-}
-
-input[type="text"]:focus, input[type="password"]:focus, input[type="file"]:focus {
-    border-color: #e74c3c; /* Cor vibrante no foco */
-}
-
-input[type="submit"] {
-    background-color: #e74c3c; /* Vermelho clássico de loja de moda */
-    color: #fff;
-    border: none;
-    padding: 12px 25px;
-    font-size: 16px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-input[type="submit"]:hover {
-    background-color: #c0392b; /* Sombra mais escura para o hover */
-}
-
-/* Estilo para os campos de título no login */
-.cadastro_box h3 {
-    font-size: 18px;
-    margin-bottom: 10px;
-}
-
-/* Estilos específicos da página de produtos */
-#formulario {
-    background-color: #fff;
-    border-radius: 10px;
-    padding: 30px;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
-    margin-top: 30px;
-}
-
-#formulario label {
-    font-size: 16px;
-    color: #555;
-    margin-bottom: 8px;
-    display: block;
-}
-
-#formulario input[type="text"], #formulario input[type="file"] {
-    width: 100%;
-    margin-bottom: 15px;
-}
-
-#formulario input[type="submit"] {
-    margin-right: 10px;
-}
-
-#formulario input[type="submit"]:nth-child(3) {
-    background-color: #2ecc71; /* Verde para o botão 'Alterar' */
-}
-
-#formulario input[type="submit"]:nth-child(4) {
-    background-color: #3498db; /* Azul para o botão 'Pesquisar' */
-}
-
-/* Estilos para os links de navegação no menu */
-.mid_page a {
-    font-size: 22px;
-    text-transform: uppercase;
-    color: #2c3e50;
-    margin: 10px;
-    display: inline-block;
-    text-decoration: none;
-    transition: all 0.3s ease;
-}
-
-.mid_page a:hover {
-    color: #e74c3c;
-}
-
-/* Estilos de containers gerais */
-.container {
+    font-size: 1rem;
+    transition: background-color 0.3s;
+  }
+  
+  header h2 a:hover {
+    background-color: #297fff;
+  }
+  
+  .container {
+    display: flex;
     max-width: 1200px;
     margin: 0 auto;
-}
+    padding: 1rem;
+  }
 
-/* Estilos para os botões de excluir e excluir */
-input[type="submit"]:nth-child(2) {
-    background-color: #f39c12; /* Amarelo para o botão 'Excluir' */
-}
-
-input[type="submit"]:hover {
-    background-color: #e67e22; /* Sombra mais escura */
-}
-
-/* Estilos para o fundo de login */
-.mid_page {
-    padding: 50px 0;
-    background-color: #ecf0f1;
-}
-
-.cadastro_box {
-    background-color: #fff;
-    padding: 20px 30px;
+  .cadastro_box {
+    justify-content: center;
+  }
+  
+  form {
+    width: 250px;
+    background-color: white;
+    padding: 1.5rem;
     border-radius: 8px;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
-}
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    margin-right: 2rem;
+    position: sticky;
+    top: 1rem;
+    height: fit-content;
+  }
+  
+  form label {
+    display: block;
+    margin: 1rem 0 0.5rem;
+    font-weight: 600;
+    color: #2c3e50;
+  }
+  
+  form select {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 0.5rem;
+    background-color: white;
+  }
+  
+  form input[type="submit"] {
+    width: 100%;
+    padding: 0.75rem;
+    margin-top: 1.5rem;
+    background-color: #297fff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s;
+  }
+  
+  form input[type="submit"]:hover {
+    background-color: #297fff;
+  }
+  
+  #resultados {
+    flex: 1;
+  }
+  
+  #resultados h2 {
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #297fff;
+    color: #2c3e50;
+  }
+  
+  .produtos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .produto {
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .produto:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+  }
+  
+  .produto h3 {
+    font-size: 1.2rem;
+    padding: 1rem;
+    color: #2c3e50;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .produto-info {
+    padding: 1rem;
+  }
+  
+  .produto p {
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+  }
+  
+  .produto strong {
+    color: #2c3e50;
+  }
+  
+  .preco {
+    color: #297fff;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin: 0.5rem 0;
+  }
+  
+  .produto-fotos {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem;
+  }
+  
+  .produto-fotos img {
+    width: calc(50% - 5px);
+    height: 150px;
+    object-fit: cover;
+    border-radius: 4px;
+    transition: opacity 0.3s;
+  }
+  
+  .produto-fotos img:hover {
+    opacity: 0.9;
+  }
+  
+  @media (max-width: 768px) {
+    .container {
+      flex-direction: column;
+    }
+    
+    form {
+      width: 100%;
+      margin-right: 0;
+      margin-bottom: 1.5rem;
+    }
+    
+    .produtos-grid {
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+  }
 
-/* Estilo para o grid de produtos */
-#resultados {
-display: flex;
-flex-wrap: wrap;
-gap: 20px;
-justify-content: flex-start;
-}
+  .mid_page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    padding: 2rem;
+  }
 
-.produto {
-border: 1px solid #ddd;
-padding: 15px;
-width: 300px;
-box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-background-color: white;
-border-radius: 5px;
-}
+  .mid_page h2 {
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+  }
 
-.produto img {
-object-fit: cover;
-margin: 5px 5px 5px 0;
-}
+  .cadastro_box {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    padding: 2rem;
+  }
 
-.produto-fotos {
-display: flex;
-justify-content: center;
-margin-top: 10px;
-}
+  .cadastro_box form {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+    position: static;
+  }
+
+  .cadastro_box h3 {
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    color: #2c3e50;
+    font-weight: 600;
+  }
+
+  .cadastro_box input[type="text"],
+  .cadastro_box input[type="password"] {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-top: 0.3rem;
+    margin-bottom: 1rem;
+    transition: border-color 0.3s;
+  }
+
+  .cadastro_box input[type="text"]:focus,
+  .cadastro_box input[type="password"]:focus {
+    border-color: #297fff;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(41, 127, 255, 0.2);
+  }
+
+  .mid_page a {
+    display: block;
+    background-color: white;
+    margin: 1rem 0;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    text-decoration: none;
+    text-align: center;
+    width: 100%;
+    max-width: 300px;
+    transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+  }
+
+  .mid_page a h2 {
+    color: #2c3e50;
+    margin: 0;
+    font-size: 1.3rem;
+  }
+
+  .mid_page a:hover {
+    background-color: #ebd82d;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+  }
+
+  #formulario {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    width: 100%;
+    max-width: 600px;
+    margin: 2rem auto;
+  }
+
+  #formulario h1 {
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #297fff;
+    text-align: center;
+    font-size: 1.8rem;
+  }
+
+  #formulario form {
+    width: 100%;
+    position: static;
+    margin: 0;
+    box-shadow: none;
+  }
+
+  #formulario input[type="text"],
+  #formulario input[type="file"] {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+  }
+
+  #formulario input[type="text"]:focus {
+    border-color: #297fff;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(41, 127, 255, 0.2);
+  }
+
+  #formulario input[type="file"] {
+    padding: 0.5rem;
+    background-color: #f9f9f9;
+    cursor: pointer;
+  }
+
+  #formulario input[type="submit"] {
+    width: calc(25% - 0.5rem);
+    display: inline-block;
+    margin-right: 0.5rem;
+    margin-top: 1rem;
+  }
+
+  #formulario input[name="gravar"] {
+    background-color: #2ecc71;
+  }
+
+  #formulario input[name="gravar"]:hover {
+    background-color: #27ae60;
+  }
+
+  #formulario input[name="excluir"] {
+    background-color: #e74c3c;
+  }
+
+  #formulario input[name="excluir"]:hover {
+    background-color: #c0392b;
+  }
+
+  #formulario input[name="alterar"] {
+    background-color: #f39c12;
+  }
+
+  #formulario input[name="alterar"]:hover {
+    background-color: #d35400;
+  }
+
+  #formulario input[name="pesquisar"] {
+    background-color: #297fff;
+    margin-right: 0;
+  }
+
+  #formulario input[name="pesquisar"]:hover {
+    background-color: #1c5eb9;
+  }
+
+  @media (max-width: 600px) {
+    #formulario {
+      padding: 1.5rem;
+    }
+    
+    #formulario input[type="submit"] {
+      width: 100%;
+      margin-right: 0;
+      margin-bottom: 0.5rem;
+    }
+    
+    .mid_page {
+      padding: 1rem;
+    }
+  }
