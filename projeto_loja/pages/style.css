@@ -372,3 +372,8 @@
       padding: 1rem;
     }
   }
+
+  header img {
+    width: 50px;
+    height: auto;
+  }

@@ -20,6 +20,7 @@
    <body>
       <header>
          <h1>PERFIL VESTIMENTAS</h1>
+         <a href="carrinho.php"><img src="../images/carrinho.png"></img></a>
          <h2><a href="login.html">LOGIN</a></h2>
       </header>
       
