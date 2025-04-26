@@ -127,6 +127,14 @@
                   echo '<img src="../images/' . $produto['foto_1'] . '" alt="Foto 1" />';
                   echo '<img src="../images/' . $produto['foto_2'] . '" alt="Foto 2" />';
                   echo '</div>';
+                  echo '<form action="carrinho.php" method="post">';
+                  echo '<input type="hidden" name="acao" value="adicionar">';
+                  echo '<input type="hidden" name="codigo" value="' . $produto['codigo'] . '">';
+                  echo '<input type="hidden" name="descricao" value="' . $produto['descricao'] . '">';
+                  echo '<input type="hidden" name="preco" value="' . $produto['preco'] . '">';
+                  echo '<input type="hidden" name="foto_1" value="' . $produto['foto_1'] . '">';
+                  echo '<button type="submit" class="botao-comprar">Comprar</button>';
+                  echo '</form>';
                   echo '</div>';
                }
                echo '</div>';
