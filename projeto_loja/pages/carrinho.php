@@ -1,8 +1,6 @@
 <?php
-// Inicia a sessão (necessário para armazenar os itens do carrinho)
 session_start();
 
-// Conecta ao banco de dados para obter informações atualizadas dos produtos
 $connect = mysql_connect('localhost', 'root', '');
 if (!$connect) {
     die('Erro na conexão: ' . mysql_error());
@@ -13,24 +11,19 @@ if (!$db) {
     die('Erro ao selecionar banco: ' . mysql_error());
 }
 
-// Inicializa o carrinho se ainda não existir
 if (!isset($_SESSION['carrinho'])) {
     $_SESSION['carrinho'] = array();
 }
 
-// Verifica a ação solicitada
 if (isset($_POST['acao'])) {
     $acao = $_POST['acao'];
     
-    // Adicionar item ao carrinho
     if ($acao == 'adicionar') {
         $codigo = $_POST['codigo'];
         
-        // Se o produto já existe no carrinho, aumenta a quantidade
         if (isset($_SESSION['carrinho'][$codigo])) {
             $_SESSION['carrinho'][$codigo]['quantidade']++;
         } else {
-            // Se não existe, busca informações completas do produto
             $sql = "SELECT 
                     p.codigo, p.descricao, p.cor, p.tamanho, p.preco, p.foto_1,
                     m.nome marca_nome, c.nome categoria_nome, t.nome tipo_nome
@@ -47,7 +40,6 @@ if (isset($_POST['acao'])) {
             $resultado = mysql_query($sql);
             $produto = mysql_fetch_assoc($resultado);
             
-            // Adiciona o produto ao carrinho
             $_SESSION['carrinho'][$codigo] = array(
                 'codigo' => $produto['codigo'],
                 'descricao' => $produto['descricao'],
@@ -59,12 +51,10 @@ if (isset($_POST['acao'])) {
             );
         }
         
-        // Redireciona para o carrinho após adicionar
         header("Location: carrinho.php");
         exit;
     }
     
-    // Remover item do carrinho
     if ($acao == 'remover') {
         $codigo = $_POST['codigo'];
         if (isset($_SESSION['carrinho'][$codigo])) {
@@ -74,16 +64,13 @@ if (isset($_POST['acao'])) {
         exit;
     }
     
-    // Atualizar quantidade
     if ($acao == 'atualizar') {
         $codigo = $_POST['codigo'];
         $quantidade = intval($_POST['quantidade']);
         
         if ($quantidade <= 0) {
-            // Se a quantidade for zero ou negativa, remove o item
             unset($_SESSION['carrinho'][$codigo]);
         } else {
-            // Atualiza a quantidade
             $_SESSION['carrinho'][$codigo]['quantidade'] = $quantidade;
         }
         
@@ -92,7 +79,6 @@ if (isset($_POST['acao'])) {
     }
 }
 
-// Calcula o total geral da compra
 function calcularTotal() {
     $total = 0;
     if (isset($_SESSION['carrinho']) && count($_SESSION['carrinho']) > 0) {
@@ -113,8 +99,12 @@ function calcularTotal() {
 <body>
     <header>
         <h1>PERFIL VESTIMENTAS</h1>
-        <a href="carrinho.php"><img src="../images/carrinho.png"></img></a>
-        <h2><a href="login.html">LOGIN</a></h2>
+        <div class="header-right">
+                <a href="carrinho.php">
+                <img src="../images/carrinho.png" alt="Carrinho">
+                </a>
+            <h2><a href="login.html">LOGIN</a></h2>
+        </div>
     </header>
     
     <div class="carrinho-container">

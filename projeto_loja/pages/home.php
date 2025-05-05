@@ -18,11 +18,15 @@
       <link rel="stylesheet" href="style.css">
    </head>
    <body>
-      <header>
-         <h1>PERFIL VESTIMENTAS</h1>
-         <a href="carrinho.php"><img src="../images/carrinho.png"></img></a>
-         <h2><a href="login.html">LOGIN</a></h2>
-      </header>
+   <header>
+        <h1>PERFIL VESTIMENTAS</h1>
+        <div class="header-right">
+                <a href="carrinho.php">
+                <img src="../images/carrinho.png" alt="Carrinho">
+                </a>
+            <h2><a href="login.html">LOGIN</a></h2>
+        </div>
+    </header>
       
       <div class="container">
          <form name="formulario" method="post" action="">
